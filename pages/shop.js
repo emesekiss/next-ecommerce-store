@@ -10,7 +10,7 @@ export default function Shop() {
           <title>Shop</title>
         </Head>
         <ProductList />
-        <h2>Fruits and Vegtables</h2>
+        <h2>Fruits and Vegetables</h2>
         <img style={{ width: 150 }} src="/cucumber.jpg" alt="cucumber" />
         <img style={{ width: 150 }} src="/onion.jpg" alt="onion" />
         <img style={{ width: 150 }} src="/banana.jpg" alt="banana" />

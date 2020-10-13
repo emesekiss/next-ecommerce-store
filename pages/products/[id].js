@@ -5,11 +5,7 @@ import { products } from '../../util/database';
 
 export default function Product(props) {
   const product = products.find((currentProduct) => {
-    if (currentProduct.id === props.id) {
-      return true;
-    }
-
-    return false;
+    return currentProduct.id === props.id;
   });
 
   return (

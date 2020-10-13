@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import { products } from '../../util/database';
+import { addProduct } from '../../util/cookies.js';
 
 export default function ProductList() {
   return (
     <div>
       <h1>Product List</h1>
-
       <ul>
         {products.map((product) => {
           return (
@@ -23,7 +23,16 @@ export default function ProductList() {
                   {product.price} <br />
                 </a>
               </Link>
-              <button>Add to Cart</button>
+              <input type="number"></input>
+              <br />
+              <button
+                id={product.id}
+                onClick={(e) => {
+                  addProduct(product.id);
+                }}
+              >
+                Add to Cart
+              </button>
             </div>
           );
         })}
