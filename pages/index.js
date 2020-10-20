@@ -7,14 +7,15 @@ export default function Home() {
       <Head>
         <title>Peas Be Mine</title>
       </Head>
-      <h1>Welcome to Peas Be Mine!</h1>
+      {/* <h1>Welcome to Peas Be Mine!</h1> */}
       <img
         style={{
-          height: 250,
-          borderRadius: 30,
+          width: 900,
+          // borderRadius: 30,
+          display: 'flex',
         }}
-        src="/vegetable3.jpg"
-        alt="Vegetables"
+        src="/home.jpg"
+        alt="farm"
       />
     </Layout>
   );

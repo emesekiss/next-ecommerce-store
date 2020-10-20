@@ -1,23 +1,49 @@
+import Link from 'next/link';
 import Layout from '../components/Layout';
 import Head from 'next/head';
-import ProductList from './products/product-list';
 
-export default function Shop() {
+export default function ProductList(props) {
   return (
     <div>
       <Layout>
         <Head>
           <title>Shop</title>
         </Head>
-        <ProductList />
-        <h2>Fruits and Vegetables</h2>
-        <img style={{ width: 150 }} src="/cucumber.jpg" alt="cucumber" />
-        <img style={{ width: 150 }} src="/onion.jpg" alt="onion" />
-        <img style={{ width: 150 }} src="/banana.jpg" alt="banana" />
-        <img style={{ width: 150 }} src="/pea.jpg" alt="pea" />
-        <img style={{ width: 150 }} src="/tomatoes.jpg" alt="tomatoes" />
-        <img style={{ width: 150 }} src="/lemon.jpg" alt="lemon" />
+        <h1>Product List</h1>
+        <ul>
+          {props.products.map((product) => {
+            return (
+              <div>
+                <Link href={`/products/${product.id}`}>
+                  <a>
+                    <img
+                      style={{ height: 100 }}
+                      src={product.img}
+                      alt={product.id}
+                    />
+                    <br />
+                    {product.name} <br />
+                    {product.price} € <br />
+                    <button>Read More</button>
+                  </a>
+                </Link>
+              </div>
+            );
+          })}
+        </ul>
       </Layout>
     </div>
   );
+}
+
+export async function getServerSideProps(context) {
+  const { getProducts } = await import('../util/database');
+
+  const products = await getProducts();
+
+  return {
+    props: {
+      products,
+    },
+  };
 }

@@ -1,11 +1,25 @@
 import Layout from '../components/Layout';
 import Head from 'next/head';
 import nextCookies from 'next-cookies';
-import { products } from '../util/database';
-import { deleteProduct } from '../util/cookies.js';
+import { deleteProduct, deleteCart } from '../util/cookies.js';
+import { useEffect, useState } from 'react';
 
 export default function Cart(props) {
-  console.log(props);
+  const [productCart, setProductCart] = useState(props.productCart);
+  const [subTotal, setSubTotal] = useState(null);
+
+  useEffect(() => {
+    const sumPrice = productCart.reduce((acc, curr) => {
+      const product = props.products.find((currentProduct) => {
+        return currentProduct.id === curr.id;
+      });
+
+      return acc + product.price * curr.count;
+    }, 0);
+
+    setSubTotal(sumPrice);
+  }, [productCart]);
+
   return (
     <div>
       <Layout>
@@ -14,49 +28,62 @@ export default function Cart(props) {
         </Head>
         <h2>My Cart</h2>
         <div>
-          {props.productCart.map((item) => {
-            const product = products.find((currentProduct) => {
+          {productCart.map((item) => {
+            const product = props.products.find((currentProduct) => {
               return currentProduct.id === item.id;
             });
+
             return (
               <div>
                 {product.name} <br />
+                {item.count}
+                <br />
                 <img
                   style={{ height: 100 }}
                   src={product.img}
                   alt={product.id}
                 />
                 <br />
-                <button>Add one more item</button>
+                <p>{product.price * item.count} €</p>
                 <button
                   id={product.id}
                   onClick={(e) => {
-                    deleteProduct(product.id);
+                    setProductCart(deleteProduct(product.id));
                   }}
                 >
-                  Reduce by one item
+                  Delete Item
                 </button>
               </div>
             );
           })}
         </div>
-        <p>Sub-total</p>
-        <p>shipping</p>
+        <p> Sub-total: {subTotal} €</p>
         <p>Checkout</p>
-        <button>Delete All</button>
+        <button
+          onClick={(e) => {
+            setProductCart(deleteCart());
+          }}
+        >
+          Delete All
+        </button>
         <button>Check Out</button>
       </Layout>
     </div>
   );
 }
 
-export function getServerSideProps(context) {
+export async function getServerSideProps(context) {
+  const { getProducts } = await import('../util/database');
+
+  const products = await getProducts();
+
   const allCookies = nextCookies(context);
   const productCart = allCookies.productCart || [];
 
   return {
     props: {
       productCart: productCart,
+      products,
     },
   };
 }

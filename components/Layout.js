@@ -20,7 +20,14 @@ export default function Layout(props) {
       >
         {props.children}
       </main>
-      <footer style={{ padding: 30 }}>footer here</footer>
+      <footer style={{ padding: 30 }}>
+        <p>Footer here</p>
+        <h2>Get in touch</h2>
+
+        <p>E-mail: veggies@fruits.com</p>
+        <p>Phone: 00222233333002</p>
+        <p>Address: Vegtable City, 10201020 Fruit street 3/1</p>
+      </footer>
     </>
   );
 }

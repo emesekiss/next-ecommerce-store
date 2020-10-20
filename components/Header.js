@@ -1,6 +1,14 @@
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { getProductCart } from '../util/cookies';
 
 export default function Header() {
+  const productCart = getProductCart();
+  const [itemQuantity, setItemQuantity] = useState(null);
+  useEffect(() => {
+    setItemQuantity(productCart.length);
+  }, [productCart]);
+
   return (
     <header
       style={{
@@ -30,21 +38,19 @@ export default function Header() {
                 src="/cart.png"
                 alt="shopping cart"
               />
+              {itemQuantity}
             </a>
           </Link>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <Link href="/">
-            <a style={{ padding: '0 10px' }}>Home</a>
+            <a>Home</a>
           </Link>
           <Link href="/shop">
-            <a style={{ padding: '0 10px' }}>Shop</a>
+            <a>Shop</a>
           </Link>
           <Link href="/about-us">
-            <a style={{ padding: '0 10px' }}>About Us</a>
-          </Link>
-          <Link href="/contact">
-            <a style={{ padding: '0 10px' }}>Contact</a>
+            <a>About Us</a>
           </Link>
         </div>
       </div>
