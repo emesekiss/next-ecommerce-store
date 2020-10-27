@@ -1,5 +1,20 @@
+/** @jsx jsx */
+import { jsx, css } from '@emotion/core';
 import Head from 'next/head';
 import Header from './Header';
+
+const mainStyles = css`
+  display: block;
+  text-align: center;
+  padding: 30px;
+  max-width: 1000px;
+  margin: auto;
+  // background: '#a3b18a',
+`;
+
+const footerStyles = css`
+  padding: 30px;
+`;
 
 export default function Layout(props) {
   return (
@@ -10,17 +25,8 @@ export default function Layout(props) {
       </Head>
 
       <Header />
-      <main
-        style={{
-          display: 'block',
-          textAlign: 'center',
-          padding: 30,
-          background: '#a3b18a',
-        }}
-      >
-        {props.children}
-      </main>
-      <footer style={{ padding: 30 }}>
+      <main css={mainStyles}>{props.children}</main>
+      <footer css={footerStyles}>
         <p>Footer here</p>
         <h2>Get in touch</h2>
 
