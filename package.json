@@ -12,6 +12,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.35",
     "camelcase-keys": "^6.2.2",
+    "cypress": "^5.5.0",
     "dotenv": "^8.2.0",
     "dotenv-cli": "^4.0.0",
     "jest": "^26.6.1",

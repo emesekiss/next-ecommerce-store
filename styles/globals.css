@@ -20,5 +20,24 @@ a {
 }
 
 button {
+  cursor: pointer;
+  margin: 10px;
+  padding: 10px 25px;
+  color: #262626;
   border-color: transparent;
+  border-radius: 6px;
+  font-family: 'Josefin Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.0125em;
+}
+
+button:hover {
+  color: #fff;
+}
+
+span {
+  color: #923737;
 }

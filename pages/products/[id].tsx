@@ -6,56 +6,41 @@ import { useState } from 'react';
 import { addProduct } from '../../util/cookies.js';
 import { useRouter } from 'next/router';
 import { GetServerSidePropsContext } from 'next';
-import { ChangeEvent} from 'react';
+import { ChangeEvent } from 'react';
 
 const cardStyles = css`
   background-color: white;
-  margin: 0px 300px;
+  max-width: 350px;
+  margin: auto;
   padding: 25px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   font-size: 18px;
+  border-radius: 4px;
 `;
 
 const buttonStyle = css`
   background-color: #92c195;
-  color: #262626;
-  height: 40px;
-  width: 120px;
-  border-radius: 6px;
-  margin: 10px;
-  font-family: 'Josefin Sans';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 18px;
-  cursor: pointer;
-  letter-spacing: 0.0125em;
-
   :hover {
     background-color: #428746;
-    color: white;
   }
 `;
 
 type ProductType = {
-  id: string
-  name: string
-  price: number
-  img: string
-  location: string
-}
-type ProductsType = ProductType[];
+  id: string;
+  name: string;
+  price: number;
+  img: string;
+  location: string;
+};
 
 type Props = {
-  products: ProductsType;
-}
+  product: ProductType;
+};
 
-
-
-export default function Product(props:Props) {
+export default function Product({ product }: Props) {
   const router = useRouter();
-  const product: ProductType = props.products;
-  const [count, setCount] = useState(1);
+
+  const [count, setCount] = useState<number>(1);
 
   return (
     <Layout>
@@ -70,17 +55,19 @@ export default function Product(props:Props) {
         <p>Origin : {product.location}</p>
 
         <input
+          data-cy={`input-product-id-${product.id}`}
           type="number"
           value={count}
           min="1"
           max="50"
           onChange={(e: ChangeEvent<HTMLInputElement>): void => {
-            setCount(e.currentTarget.value);
+            setCount(+e.currentTarget.value);
           }}
         ></input>
         <br />
 
         <button
+          data-cy={`button-add-product-id-${product.id}`}
           css={buttonStyle}
           id={product.id}
           onClick={(e) => {
@@ -100,12 +87,11 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
   const { getProductById } = await import('../../util/database');
 
-  const products: ProductsType = await getProductById(id);
+  const product: ProductType = await getProductById(id);
 
-  const props = {};
-
-  if (products) props.products = products;
   return {
-    props: props,
+    props: {
+      product,
+    },
   };
 }

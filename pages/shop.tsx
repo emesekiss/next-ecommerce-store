@@ -7,33 +7,39 @@ import { GetServerSidePropsContext } from 'next';
 
 const productStyles = css`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  row-gap: 50px;
-  column-gap: 100px;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 25px;
+  column-gap: 25px;
+  @media screen and (min-width: 768px) {
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 50px;
+    column-gap: 100px;
+  }
 `;
 
 const productCardStyles = css`
   cursor: pointer;
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 4px;
   :hover {
     width: 102%;
     height: 102%;
   }
 `;
 type ProductType = {
-  id: string
-  name: string
-  price: number
-  img: string
-}
+  id: string;
+  name: string;
+  price: number;
+  img: string;
+};
 
 type Props = {
   products: ProductsType;
-}
+};
 type ProductsType = ProductType[];
 
-export default function ProductList(props:Props) {
+export default function ProductList(props: Props) {
   return (
     <div>
       <Layout>
@@ -42,10 +48,13 @@ export default function ProductList(props:Props) {
         </Head>
 
         <div css={productStyles}>
-          {props.products.map((product:ProductType) => {
+          {props.products.map((product: ProductType) => {
             return (
               <Link href={`/products/${product.id}`}>
-                <div css={productCardStyles}>
+                <div
+                  css={productCardStyles}
+                  data-cy={`product-id-${product.id}`}
+                >
                   <img
                     style={{ height: 120 }}
                     src={product.img}

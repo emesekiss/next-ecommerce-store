@@ -22,7 +22,7 @@ const cartStyles = css`
     height: 45px;
   }
 `;
-const innerHeaderStyles = css``;
+
 const titleStyles = css`
   font-weight: 400;
   font-style: normal;
@@ -30,11 +30,7 @@ const titleStyles = css`
   line-height: 61px;
   color: #874342;
   margin: 0;
-  :hover {
-    text-shadow: 10px 10px 10px white;
-    font-size: 50px;
-    cursor: pointer;
-  }
+  cursor: default;
 `;
 
 const navStyles = css`
@@ -66,16 +62,20 @@ export default function Header() {
   }, [productCart]);
 
   return (
-    <header css={headerStyles} style={{}}>
+    <header css={headerStyles}>
       <div>
-        <div css={innerHeaderStyles}>
+        <div>
           <img style={{ height: 120 }} src="/icon.png" alt="logo" />
           <Link href="/shop">
             <h2 css={titleStyles}>Peas Be Mine</h2>
           </Link>
           <Link href="/cart">
             <a css={cartStyles}>
-              <img src="/shopping-cart.png" alt="shopping cart" />
+              <img
+                data-cy="header-link-cart"
+                src="/shopping-cart.png"
+                alt="shopping cart"
+              />
               {itemQuantity}
             </a>
           </Link>

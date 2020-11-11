@@ -1,5 +1,19 @@
+/** @jsx jsx */
+import { jsx, css } from '@emotion/core';
 import Layout from '../components/Layout';
 import Head from 'next/head';
+
+const imageStyles = css`
+  img {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    height: 120px;
+  }
+  @media screen and (min-width: 768px) {
+    img {
+      height: 300px;
+    }
+  }
+`;
 
 export default function AboutUs() {
   return (
@@ -19,10 +33,12 @@ export default function AboutUs() {
           doorstep.
           <p style={{ fontWeight: 'bold' }}>Local. Natural. Sustainable.</p>
         </p>
-        <img style={{ height: 300 }} src="/magnolia.jpg" alt="Farm" />
-        <img style={{ height: 300 }} src="/birch.jpg" alt="Farm" />
-        <img style={{ height: 300 }} src="/elm.jpg" alt="Farm" />
-        <img style={{ height: 300 }} src="/lake.jpg" alt="Farm" />
+        <div css={imageStyles}>
+          <img src="/magnolia.jpg" alt="Farm" />
+          <img src="/birch.jpg" alt="Farm" />
+          <img src="/elm.jpg" alt="Farm" />
+          <img src="/lake.jpg" alt="Farm" />
+        </div>
       </Layout>
     </div>
   );
