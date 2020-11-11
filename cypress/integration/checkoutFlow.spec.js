@@ -1,6 +1,6 @@
 describe('CheckoutFlow', () => {
   it('adds items to cart, inserts payment info, checks out', () => {
-    cy.visit('http://localhost:3000/shop');
+    cy.visit('/');
     cy.get('[data-cy=product-id-5] > img').click();
     cy.location('pathname').should('match', /\/products\/5$/);
     cy.get('[data-cy=button-add-product-id-5]').click();
