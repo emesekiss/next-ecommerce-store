@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "migrate": "dotenv ley",
-    "test": "jest"
+    
   },
   "dependencies": {
     "@emotion/core": "^10.0.35",

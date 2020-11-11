@@ -1,9 +1,9 @@
-name: yarn test
+name: yarn jest
 on: push
 
 jobs:
   build:
-    name: yarn test
+    name: yarn jest
     # Tell the action to use the latest
     # version of Ubuntu (a Linux flavor)
     # https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
@@ -19,4 +19,4 @@ jobs:
         with:
           node-version: '14.x'
       - run: yarn --frozen-lockfile
-      - run: yarn test
+      - run: yarn jest
