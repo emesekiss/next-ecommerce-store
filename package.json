@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "heroku-postbuild": "yarn migrate up && yarn build",
     "start": "next start -p ${PORT:-\"3000\"}",
     "migrate": "dotenv ley"
     
@@ -42,5 +43,7 @@
     "eslint-plugin-react": "7.20.3",
     "eslint-plugin-react-hooks": "4.0.8",
     "typescript": "^4.0.3"
-  }
+  },
+
+  "cacheDirectories": [".next/cache"]
 }
