@@ -21,6 +21,7 @@ const cardStyles = css`
   }
   input {
     font-size: 1.125rem;
+    font-family: 'Josefin Sans';
   }
 `;
 
