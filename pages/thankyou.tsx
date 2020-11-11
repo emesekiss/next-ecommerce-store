@@ -27,7 +27,7 @@ export default function AboutUs() {
         <p>
           We hope you enjoy your shopping, and if you have any questions, please
           don’t hesitate to reach out. We love hearing from our
-          customers—whether you loved your our service or have ideas for how we
+          customers—whether you loved our service or have ideas for how we
           can make the experience even better.
           <br />
           <br />
