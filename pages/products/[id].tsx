@@ -10,12 +10,18 @@ import { ChangeEvent } from 'react';
 
 const cardStyles = css`
   background-color: white;
-  max-width: 350px;
+  max-width: 300px;
   margin: auto;
   padding: 25px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   font-size: 18px;
   border-radius: 4px;
+  img {
+    height: 160px;
+  }
+  input {
+    font-size: 1.125rem;
+  }
 `;
 
 const buttonStyle = css`
@@ -49,7 +55,7 @@ export default function Product({ product }: Props) {
       </Head>
       <div css={cardStyles}>
         <p>{product.name}</p>
-        <img style={{ height: 200 }} src={product.img} alt={product.id} />
+        <img src={product.img} alt={product.id} />
 
         <p> {product.price} € </p>
         <p>Origin : {product.location}</p>
@@ -72,7 +78,7 @@ export default function Product({ product }: Props) {
           id={product.id}
           onClick={(e) => {
             addProduct(product.id, count * 1);
-            router.push(`/products/${product.id}`);
+            router.push('/shop');
           }}
         >
           ADD TO CART
