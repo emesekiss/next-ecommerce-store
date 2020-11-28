@@ -28,6 +28,7 @@ const productStyles = css`
   grid-template-columns: 1fr 1fr;
   row-gap: 25px;
   column-gap: 25px;
+
   @media screen and (min-width: 768px) {
     grid-template-columns: 1fr 1fr 1fr;
     row-gap: 50px;

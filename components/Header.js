@@ -48,7 +48,6 @@ const navStyles = css`
     padding: 5px 25px 5px 0px;
   }
   a:hover {
-    /* text-decoration: underline; */
     text-shadow: 5px 5px 5px white;
     font-size: 22px;
   }
