@@ -8,6 +8,10 @@ const headerStyles = css`
   text-align: center;
   position: relative;
   margin-bottom: 20px;
+  a,
+  h1 {
+    cursor: pointer;
+  }
 `;
 const cartStyles = css`
   position: absolute;
@@ -63,33 +67,33 @@ export default function Header() {
   return (
     <header css={headerStyles}>
       <div>
-        <div>
-          <img style={{ height: 120 }} src="/icon.png" alt="logo" />
-          <Link href="/shop">
-            <h2 css={titleStyles}>Peas Be Mine</h2>
-          </Link>
-          <Link href="/cart">
-            <a css={cartStyles}>
-              <img
-                data-cy="header-link-cart"
-                src="/shopping-cart.png"
-                alt="shopping cart"
-              />
-              {itemQuantity}
-            </a>
-          </Link>
-        </div>
-        <div css={navStyles}>
-          <Link href="/">
-            <a>HOME</a>
-          </Link>
-          <Link href="/shop">
-            <a>SHOP</a>
-          </Link>
-          <Link href="/about-us">
-            <a>ABOUT US</a>
-          </Link>
-        </div>
+        <Link href="/shop">
+          <a>
+            <img style={{ height: 120 }} src="/icon.png" alt="logo" />
+            <h1 css={titleStyles}>Peas Be Mine</h1>
+          </a>
+        </Link>
+        <Link href="/cart">
+          <a css={cartStyles}>
+            <img
+              data-cy="header-link-cart"
+              src="/shopping-cart.png"
+              alt="shopping cart"
+            />
+            {itemQuantity}
+          </a>
+        </Link>
+      </div>
+      <div css={navStyles}>
+        <Link href="/">
+          <a>HOME</a>
+        </Link>
+        <Link href="/shop">
+          <a>SHOP</a>
+        </Link>
+        <Link href="/about-us">
+          <a>ABOUT US</a>
+        </Link>
       </div>
     </header>
   );

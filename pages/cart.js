@@ -60,69 +60,63 @@ export default function Cart(props) {
   }, [productCart, props.products]);
 
   return (
-    <div>
-      <Layout>
-        <Head>
-          <title>Cart</title>
-        </Head>
-        <h2 style={{ fontSize: 24, paddingBottom: 20, color: '#262626' }}>
-          My Cart
-        </h2>
-        <div css={productStyles}>
-          {productCart.map((item) => {
-            const product = props.products.find((currentProduct) => {
-              return currentProduct.id === item.id;
-            });
+    <Layout>
+      <Head>
+        <title>Cart</title>
+      </Head>
+      <h2 style={{ fontSize: 24, paddingBottom: 20, color: '#262626' }}>
+        My Cart
+      </h2>
+      <div css={productStyles}>
+        {productCart.map((item) => {
+          const product = props.products.find((currentProduct) => {
+            return currentProduct.id === item.id;
+          });
 
-            return (
-              <div css={productCardStyles}>
-                <p>{product.name}</p>
-                <img
-                  style={{ height: 100 }}
-                  src={product.img}
-                  alt={product.id}
-                />
-                <p>{item.count} item selected</p>
-                <p>{product.price * item.count} €</p>
-                <button
-                  data-cy={`button-remove-product-id-${item.id}`}
-                  css={redButtonStyle}
-                  id={product.id}
-                  onClick={(e) => {
-                    setProductCart(deleteProduct(product.id));
-                  }}
-                >
-                  DELETE ITEM
-                </button>
-              </div>
-            );
-          })}
-        </div>
-        <p style={{ fontSize: 24 }}> Sub-total: {subTotal} €</p>
+          return (
+            <div css={productCardStyles}>
+              <p>{product.name}</p>
+              <img style={{ height: 100 }} src={product.img} alt={product.id} />
+              <p>{item.count} item selected</p>
+              <p>{product.price * item.count} €</p>
+              <button
+                data-cy={`button-remove-product-id-${item.id}`}
+                css={redButtonStyle}
+                id={product.id}
+                onClick={(e) => {
+                  setProductCart(deleteProduct(product.id));
+                }}
+              >
+                DELETE ITEM
+              </button>
+            </div>
+          );
+        })}
+      </div>
+      <p style={{ fontSize: 24 }}> Sub-total: {subTotal} €</p>
 
-        <button
-          css={redButtonStyle}
-          onClick={(e) => {
-            setProductCart(deleteCart());
-          }}
-        >
-          DELETE ALL
+      <button
+        css={redButtonStyle}
+        onClick={(e) => {
+          setProductCart(deleteCart());
+        }}
+      >
+        DELETE ALL
+      </button>
+      <Link
+        href={{
+          pathname: '../checkout',
+          query: {
+            subTotal,
+          },
+        }}
+        id="checkout"
+      >
+        <button data-cy="button-checkout" css={buttonStyle}>
+          CHECK OUT
         </button>
-        <Link
-          href={{
-            pathname: '../checkout',
-            query: {
-              subTotal,
-            },
-          }}
-          id="checkout"
-        >
-          <button data-cy="button-checkout" css={buttonStyle}>
-            CHECK OUT
-          </button>
-        </Link>
-      </Layout>
-    </div>
+      </Link>
+    </Layout>
   );
 }
 

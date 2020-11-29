@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Layout from '../components/Layout';
 import Head from 'next/head';
 import { GetServerSidePropsContext } from 'next';
+import { ProductType } from '../util/types';
 
 const productStyles = css`
   display: grid;
@@ -27,12 +28,6 @@ const productCardStyles = css`
     height: 102%;
   }
 `;
-type ProductType = {
-  id: string;
-  name: string;
-  price: number;
-  img: string;
-};
 
 type Props = {
   products: ProductsType;
@@ -41,34 +36,29 @@ type ProductsType = ProductType[];
 
 export default function ProductList(props: Props) {
   return (
-    <div>
-      <Layout>
-        <Head>
-          <title>Shop</title>
-        </Head>
+    <Layout>
+      <Head>
+        <title>Shop</title>
+      </Head>
 
-        <div css={productStyles}>
-          {props.products.map((product: ProductType) => {
-            return (
-              <Link href={`/products/${product.id}`}>
-                <div
-                  css={productCardStyles}
-                  data-cy={`product-id-${product.id}`}
-                >
-                  <img
-                    style={{ height: 120 }}
-                    src={product.img}
-                    alt={product.id}
-                  />
-                  <p>{product.name} </p>
-                  <p>{product.price} €</p>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
-      </Layout>
-    </div>
+      <div css={productStyles}>
+        {props.products.map((product: ProductType) => {
+          return (
+            <Link href={`/products/${product.id}`}>
+              <div css={productCardStyles} data-cy={`product-id-${product.id}`}>
+                <img
+                  style={{ height: 120 }}
+                  src={product.img}
+                  alt={product.id}
+                />
+                <p>{product.name} </p>
+                <p>{product.price} €</p>
+              </div>
+            </Link>
+          );
+        })}
+      </div>
+    </Layout>
   );
 }
 

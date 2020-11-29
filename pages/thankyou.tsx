@@ -14,28 +14,23 @@ const imageStyles = css`
 
 export default function AboutUs() {
   return (
-    <div>
-      <Layout>
-        <Head>
-          <title>Thank You</title>
-        </Head>
+    <Layout>
+      <Head>
+        <title>Thank You</title>
+      </Head>
 
-        <h2>Thank You</h2>
+      <h2>Thank You</h2>
 
-        <h4>We want to thank you for supporting our small business.</h4>
-        <br />
-        <p>
-          We hope you enjoy your shopping, and if you have any questions, please
-          don’t hesitate to reach out. We love hearing from our
-          customers—whether you loved our service or have ideas for how we
-          can make the experience even better.
-          <br />
-          <br />
-          Best Wishes, Peas Be Mine Team
-          <p style={{ fontWeight: 'bold' }}>Local. Natural. Sustainable.</p>
-        </p>
-        <img css={imageStyles} src="/thankyou.jpg" alt="Farm" />
-      </Layout>
-    </div>
+      <h4>We want to thank you for supporting our small business.</h4>
+
+      <p>
+        We hope you enjoy your shopping, and if you have any questions, please
+        don’t hesitate to reach out. We love hearing from our customers—whether
+        you loved our service or have ideas for how we can make the experience
+        even better. Best Wishes, Peas Be Mine Team
+      </p>
+      <p style={{ fontWeight: 'bold' }}>Local. Natural. Sustainable.</p>
+      <img css={imageStyles} src="/thankyou.jpg" alt="Farm" />
+    </Layout>
   );
 }

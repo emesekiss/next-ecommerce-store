@@ -3,10 +3,11 @@ import { jsx, css } from '@emotion/core';
 import Head from 'next/head';
 import Layout from '../../components/Layout';
 import { useState } from 'react';
-import { addProduct } from '../../util/cookies.js';
+import { addProduct } from '../../util/cookies';
 import { useRouter } from 'next/router';
 import { GetServerSidePropsContext } from 'next';
 import { ChangeEvent } from 'react';
+import { ProductType } from '../../util/types';
 
 const cardStyles = css`
   background-color: white;
@@ -32,14 +33,6 @@ const buttonStyle = css`
   }
 `;
 
-type ProductType = {
-  id: string;
-  name: string;
-  price: number;
-  img: string;
-  location: string;
-};
-
 type Props = {
   product: ProductType;
 };
@@ -52,7 +45,7 @@ export default function Product({ product }: Props) {
   return (
     <Layout>
       <Head>
-        <title>Single Product</title>
+        <title>{product.name}</title>
       </Head>
       <div css={cardStyles}>
         <p>{product.name}</p>

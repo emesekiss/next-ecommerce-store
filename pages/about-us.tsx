@@ -27,12 +27,11 @@ export default function AboutUs() {
 
         <p>
           Peas be mine is a webshop where we sell locally produced organic
-          vegetables and fruits from four locations. <br />
-          Magnolia Ranch. Birch Wood Farm. Elm Tree Farm. Lake View Farm. <br />
-          It has never been so easy to have fresh products delivered to your
-          doorstep.
-          <p style={{ fontWeight: 'bold' }}>Local. Natural. Sustainable.</p>
+          vegetables and fruits from four locations. Magnolia Ranch. Birch Wood
+          Farm. Elm Tree Farm. Lake View Farm. It has never been so easy to have
+          fresh products delivered to your doorstep.
         </p>
+        <p style={{ fontWeight: 'bold' }}>Local. Natural. Sustainable.</p>
         <div css={imageStyles}>
           <img src="/magnolia.jpg" alt="Farm" />
           <img src="/birch.jpg" alt="Farm" />
