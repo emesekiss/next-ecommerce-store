@@ -1,30 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Peas Be Mine
 
-## Getting Started
+- Simple E-commerce Shop
 
-First, run the development server:
+## Description
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Peas Be Mine is built with Next.js and PostgreSQL database. Cookies were set up using cookies-js and nextcookies libraries.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+**Landing page** includes
 
-## Learn More
+- a header with logo, name and simple navigation
+- a cart symbol shows the number of items put in the cart during shopping and also takes the user to the cart
 
-To learn more about Next.js, take a look at the following resources:
+**Shop** includes
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- list of shopping items to browse from
+- dynamic pages to show more details about the products and enable the user to add it to the cart and change quantity
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+**Cart** includes
 
-## Deploy on Vercel
+- the total amount is available here
+- the user can delete items from the cart or delete the whole list of items in the cart
+- the checkout option asks the user to fill out a form after completion it directs to a thank you page
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Technologies used
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Next.js
+- React.js
+- TypeScript
+- PostgreSQL and ley for database migrations
+- emotion@core
+- Deployment: Heroku
+
+## Documentation
+
+- ReadMe
+- Design planning with Figma
+
+## Screenshots
+
+![Screenshot](./public/Screenshot.png)
